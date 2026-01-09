@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karame Karaoke Player - Referral Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .bonus-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .bonus-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .bonus-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .bonus-description {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .code-section {
+            margin-bottom: 30px;
+        }
+
+        .code-label {
+            color: #999;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .code-display {
+            background: #f5f5f5;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        .code-copy {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .code-copy:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .code-copy.copied {
+            background: #4caf50;
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f8f8;
+            transform: translateY(-3px);
+        }
+
+        .features {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .features h3 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 18px;
+            margin-right: 12px;
+            min-width: 24px;
+        }
+
+        .app-stores {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .store-link {
+            padding: 10px 16px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .store-link:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 20px 0;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .status-message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .status-message.show {
+            display: block;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            color: #667eea;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .bonus-value {
+                font-size: 28px;
+            }
+
+            .code-display {
+                font-size: 20px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎤</div>
+        <h1>Karame Karaoke Player</h1>
+        <p class="subtitle">Aplikasi karaoke terlengkap dengan ribuan lagu</p>
+
+        <div class="status-message" id="statusMessage"></div>
+
+        <div class="bonus-box">
+            <div class="bonus-label">Dapatkan bonus dari teman Anda</div>
+            <div class="bonus-value" id="bonusValue">7 hari</div>
+            <div class="bonus-description">Gratis akses premium subscription</div>
+        </div>
+
+        <div class="code-section">
+            <span class="code-label">Kode Referral Anda</span>
+            <div class="code-display" id="referralCode">Loading...</div>
+            <button class="code-copy" id="copyCodeBtn" onclick="copyCode()">Salin Kode</button>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="openAppBtn" onclick="openApp()">
+                <span>📱</span>
+                <span>Buka Aplikasi</span>
+            </button>
+            <button class="btn btn-secondary" id="shareBtn" onclick="shareReferral()">
+                <span>🔗</span>
+                <span>Bagikan</span>
+            </button>
+        </div>
+
+        <button class="btn btn-secondary" style="width: 100%;" onclick="openQRCode()">
+            <span>📲</span>
+            <span>Buat QR Code</span>
+        </button>
+
+        <div class="features">
+            <h3>Fitur Karame</h3>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Ribuan lagu karaoke berkualitas tinggi</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Kompatibel dengan TV dan remote</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Fitur recording dan efek vokal</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Download offline untuk karaoke tanpa internet</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Equalizer dan kontrol pitch profesional</span>
+            </div>
+        </div>
+
+        <div class="app-stores">
+            <a href="https://play.google.com/store/apps/details?id=app.karame.karlite" class="store-link" target="_blank">Google Play</a>
+            <a href="https://www.amazon.com/gp/mas/your-account/myapps" class="store-link" target="_blank">Amazon App Store</a>
+        </div>
+
+        <div class="loading" id="loadingMessage">⏳ Memproses...</div>
+
+        <div class="divider"></div>
+
+        <p class="footer">
+            Berbagi kode referral Anda dan dapatkan bonus gratis untuk setiap teman yang bergabung.
+        </p>
+    </div>
+
+    <script>
+        // Extract referral code from URL query parameter
+        function getReferralCodeFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('code') || extractFromPath();
+        }
+
+        // Extract code from URL path (e.g., /karame/ABC123DE)
+        function extractFromPath() {
+            const pathParts = window.location.pathname.split('/').filter(p => p);
+            // Find 'karame' and get the next segment if it's 8 characters (referral code)
+            const karameIndex = pathParts.indexOf('karame');
+            if (karameIndex !== -1 && karameIndex + 1 < pathParts.length) {
+                const potential = pathParts[karameIndex + 1];
+                if (potential.length === 8 && /^[A-Z0-9]{8}$/.test(potential)) {
+                    return potential;
+                }
+            }
+            return null;
+        }
+
+        // Format and display referral code
+        function displayReferralCode() {
+            const code = getReferralCodeFromURL();
+            const codeElement = document.getElementById('referralCode');
+            const openAppBtn = document.getElementById('openAppBtn');
+            
+            if (code) {
+                codeElement.textContent = code.toUpperCase();
+                // Update open app button to include the code
+                openAppBtn.onclick = function() {
+                    openApp(code);
+                };
+            } else {
+                codeElement.textContent = 'Tidak ada kode';
+                codeElement.style.color = '#999';
+            }
+        }
+
+        // Copy referral code to clipboard
+        function copyCode() {
+            const code = document.getElementById('referralCode').textContent;
+            if (code === 'Tidak ada kode' || code === 'Loading...') {
+                showStatus('Tidak ada kode untuk disalin', 'error');
+                return;
+            }
+
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyCodeBtn');
+                btn.textContent = '✓ Disalin!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = 'Salin Kode';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                showStatus('Gagal menyalin kode', 'error');
+            });
+        }
+
+        // Open app with referral code via deep link
+        function openApp(code = null) {
+            const referralCode = code || document.getElementById('referralCode').textContent;
+            
+            if (!referralCode || referralCode === 'Tidak ada kode' || referralCode === 'Loading...') {
+                showStatus('Tidak ada kode referral untuk dibuka', 'error');
+                return;
+            }
+
+            // Deep link format: karame://referral/CODE
+            const deepLink = `karame://referral/${referralCode}`;
+            
+            // Try to open the app via deep link
+            window.location.href = deepLink;
+
+            // Fallback to Play Store after 2.5 seconds if app isn't installed
+            setTimeout(() => {
+                window.location.href = 'https://play.google.com/store/apps/details?id=app.karame.karlite';
+            }, 2500);
+        }
+
+        // Share referral link
+        function shareReferral() {
+            const code = document.getElementById('referralCode').textContent;
+            
+            if (!code || code === 'Tidak ada kode' || code === 'Loading...') {
+                showStatus('Tidak ada kode untuk dibagikan', 'error');
+                return;
+            }
+
+            const shareUrl = `https://mavindo.github.io/karame/referral.html?code=${code}`;
+            const shareText = `Coba aplikasi Karame - Karaoke Player!\n\nGunakan kode referral saya: ${code}\nuntuk mendapat 7 hari gratis subscription!\n\nBuka link ini: ${shareUrl}`;
+
+            // Check if Web Share API is available
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Karame Karaoke Player',
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => {
+                    // User cancelled or error
+                    if (err.name !== 'AbortError') {
+                        fallbackShare(shareText, shareUrl);
+                    }
+                });
+            } else {
+                fallbackShare(shareText, shareUrl);
+            }
+        }
+
+        // Fallback share method
+        function fallbackShare(text, url) {
+            // Copy to clipboard as fallback
+            const fullText = `${text}\n\nDeep Link: karame://referral/${document.getElementById('referralCode').textContent}`;
+            
+            navigator.clipboard.writeText(fullText).then(() => {
+                showStatus('✓ Link dan kode disalin ke clipboard. Bagikan melalui WhatsApp, Telegram, atau platform lain.', 'success');
+            }).catch(() => {
+                // Last resort: show a popup
+                alert(text);
+            });
+        }
+
+        // Show status message
+        function showStatus(message, type = 'success') {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = `status-message show ${type}`;
+            
+            setTimeout(() => {
+                statusEl.classList.remove('show');
+            }, 4000);
+        }
+
+        // Open QR code page
+        function openQRCode() {
+            const code = document.getElementById('referralCode').textContent;
+            if (code && code !== 'Tidak ada kode' && code !== 'Loading...') {
+                window.location.href = `/karame/qr.html?code=${code}`;
+            } else {
+                showStatus('Tidak ada kode untuk membuat QR', 'error');
+            }
+        }
+
+        // Get bonus value from Firebase/backend (for now using hardcoded value)
+        function loadBonusValue() {
+            // In production, this would fetch from your backend
+            // For now using the default value set in HTML
+            document.getElementById('bonusValue').textContent = '7 hari';
+        }
+
+        // Initialize page
+        function init() {
+            displayReferralCode();
+            loadBonusValue();
+
+            // Update page title with code if available
+            const code = getReferralCodeFromURL();
+            if (code) {
+                document.title = `Karame - Referral ${code}`;
+            }
+        }
+
+        // Run initialization when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
