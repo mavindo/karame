@@ -336,6 +336,11 @@
             <span>Buat QR Code</span>
         </button>
 
+        <div style="background: #f0f8ff; border-left: 4px solid #667eea; padding: 15px; margin: 20px 0; border-radius: 5px; font-size: 13px; color: #333;">
+            <strong>💡 Tips Sharing:</strong>
+            <p style="margin: 8px 0 0 0;">Tekan "Bagikan" untuk share link ke teman via WhatsApp, Telegram, atau app lain. Link akan terlihat biru dan bisa diklik!</p>
+        </div>
+
         <div class="features">
             <h3>Fitur Karame</h3>
             <div class="feature-item">
@@ -466,7 +471,7 @@
             }
 
             const shareUrl = `https://mavindo.github.io/karame/referral.html?code=${code}`;
-            const shareText = `Coba aplikasi Karame - Karaoke Player!\n\nGunakan kode referral saya: ${code}\nuntuk mendapat 7 hari gratis subscription!\n\nBuka link ini: ${shareUrl}`;
+            const shareText = `Coba aplikasi Karame - Karaoke Player! 🎤\n\nGunakan kode referral saya: ${code}\nuntuk mendapat 7 hari gratis subscription!\n\n${shareUrl}`;
 
             // Check if Web Share API is available
             if (navigator.share) {
@@ -487,11 +492,9 @@
 
         // Fallback share method
         function fallbackShare(text, url) {
-            // Copy to clipboard as fallback
-            const fullText = `${text}\n\nDeep Link: karame://referral/${document.getElementById('referralCode').textContent}`;
-            
-            navigator.clipboard.writeText(fullText).then(() => {
-                showStatus('✓ Link dan kode disalin ke clipboard. Bagikan melalui WhatsApp, Telegram, atau platform lain.', 'success');
+            // Copy link to clipboard
+            navigator.clipboard.writeText(text).then(() => {
+                showStatus('✓ Link disalin ke clipboard! Bagikan melalui WhatsApp, Telegram, atau platform lain.', 'success');
             }).catch(() => {
                 // Last resort: show a popup
                 alert(text);
